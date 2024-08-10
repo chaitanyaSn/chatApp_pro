@@ -2,12 +2,14 @@ import authRoutes from "./routes/authroutes.js"
 import messageRoutes from "./routes/message.routes.js"
 import express from "express"
 import cookieParser from "cookie-parser"
+import cors from "cors"
 
 import dotenv from "dotenv"
 import connectMongo from "./db/connectMongo.js"
 const app=express()
 
 dotenv.config()
+app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
 
