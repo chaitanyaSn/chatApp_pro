@@ -1,15 +1,17 @@
 import React from 'react'
 import Convo from './Convo'
+import useGetConversation from '../../hooks/useGetConversation';
 
 const Conversations = () => {
+  const {loading,conversation}=useGetConversation();
+  console.log(conversation)
   return (
     <div className='py-2 flex flex-col space-y-2 overflow-auto'>
-      <Convo/>
-      <Convo/>
-      <Convo/>
-      <Convo/>
-      <Convo/>
-      <Convo/> 
+     {conversation.map((convo,idx)=>(
+      <Convo key={convo._id}
+      conversation={convo}
+      lastIdx={idx=== conversation.length-1}/>
+     ))}
     </div>
   )
 }
