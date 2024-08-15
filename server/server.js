@@ -7,8 +7,9 @@ import cors from "cors"
 
 import dotenv from "dotenv"
 import connectMongo from "./db/connectMongo.js"
+import { app, server } from "./socket/socket.js"
 
-const app=express()
+
 
 dotenv.config()
 app.use(cors({
@@ -26,7 +27,7 @@ app.use("/api/auth",authRoutes)
 app.use("/api/messages",messageRoutes)
 app.use("/api/users",userRouter)
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     connectMongo()
     console.log(`server is running on ${PORT}`)
 })
